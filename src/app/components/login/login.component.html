@@ -1,0 +1,21 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-evenly">
+    <div fxLayout="row" fxLayoutAlign="center">
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+      <form fxLayout="column" [formGroup]="userForm" fxLayoutAlign="center" fxFlex="50">
+        <h1>Inicio Sesión</h1>
+        <mat-form-field>
+          <input type="text" matInput placeholder="email" formControlName="email" name="txtEmail" autofocus>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="password" formControlName="password" name="txtPassword">
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <button mat-raised-button class="finsmart-gradient" type="button" fxFlex="30" name="btnLogin"
+            (click)="login()">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
