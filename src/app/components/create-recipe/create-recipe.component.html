@@ -1,0 +1,60 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-evenly">
+    <div>
+      <h1>CREAR RECETA</h1>
+    </div>
+    <form [formGroup]="recipeForm" fxLayout="column">
+      <mat-form-field>
+        <input type="text" matInput autocomplete="off" placeholder="Nombre" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
+          formControlName="description"></textarea>
+      </mat-form-field>
+    </form>
+
+    <div class="ingredients-section" fxLayout="column">
+      <div>
+        <h3>Ingredientes</h3>
+      </div>
+      <form [formGroup]="ingredientForm" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
+        <mat-form-field fxFlex="40">
+          <input type="text" matInput autocomplete="off" placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+        <mat-form-field fxFlex="20">
+          <mat-label>Unidad de medida</mat-label>
+          <mat-select formControlName="measureUnit">
+            <mat-option *ngFor="let unit of measureUnits" [value]="unit">
+              {{unit}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="15">
+          <input type="number" matInput autocomplete="off" placeholder="Cantidad" formControlName="quantity">
+        </mat-form-field>
+        <div fxFlex="5">
+          <button mat-mini-fab color="primary" matTooltip="Agregar" matTooltipPosition="above"
+            (click)="addIngredient()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </form>
+
+      <div fxLayout="column">
+        <table class="mat-table mat-elevation-z8">
+          <tr class="mat-row">
+            <td class="mat-header-cell">Nombre</td>
+            <td class="mat-header-cell">Unidad</td>
+            <td class="mat-header-cell">Cantidad</td>
+          </tr>
+          <tr class="mat-row" *ngFor="let ingredient of recipeIngredients">
+            <td class="mat-cell">{{ingredient.name}}</td>
+            <td class="mat-cell">{{ingredient.measureUnit}}</td>
+            <td class="mat-cell">{{ingredient.quantity}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

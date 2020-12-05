@@ -1,8 +1,8 @@
+import { AuthService } from "./../../services/auth.service";
 import { SpinnerService } from "./../../services/spinner.service";
 import { Component, HostListener } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
-import { HttpResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-login",
@@ -10,12 +10,16 @@ import { HttpResponse } from "@angular/common/http";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
+  constructor(
+    private router: Router,
+    private spinner: SpinnerService,
+    private authService: AuthService
+  ) {}
+
   userForm = new FormGroup({
     email: new FormControl(),
     password: new FormControl(),
   });
-
-  constructor(private router: Router, private spinner: SpinnerService) {}
 
   @HostListener("window:keyup", ["$event"])
   keyEvent(event: KeyboardEvent) {
@@ -25,8 +29,16 @@ export class LoginComponent {
   }
 
   login() {
-    this.spinner.start();
-    const user = this.userForm.controls.email.value;
+    const username = this.userForm.controls.email.value;
     const password = this.userForm.controls.password.value;
+
+    this.spinner.start();
+
+    this.authService.login(username, password).subscribe((res: any) => {
+      this.spinner.stop();
+      if (res.body) {
+        this.router.navigate(["create-recipe"]);
+      }
+    });
   }
 }
