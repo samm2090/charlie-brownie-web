@@ -1,0 +1,60 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-evenly">
+    <div>
+      <h1>STOCK</h1>
+    </div>
+    <div fxLayout="column">
+      <form [formGroup]="ingredientForm" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
+        <mat-form-field fxFlex="40">
+          <input type="text" matInput autocomplete="off" placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+        <mat-form-field fxFlex="20">
+          <mat-label>Unidad de medida</mat-label>
+          <mat-select formControlName="measureUnit">
+            <mat-option *ngFor="let unit of measureUnits" [value]="unit">
+              {{unit}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="15">
+          <input type="number" matInput autocomplete="off" placeholder="Cantidad" formControlName="quantity">
+        </mat-form-field>
+        <div fxFlex="5">
+          <button mat-mini-fab color="primary" matTooltip="Agregar" matTooltipPosition="above"
+            (click)="addIngredient()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </form>
+
+      <div>
+        <h3>Items</h3>
+      </div>
+
+      <div fxLayout="column" class="mat-elevation-z8">
+        <table class="mat-table">
+          <thead>
+            <tr class="mat-header-row">
+              <th class="">Nombre</th>
+              <th class="">Precio estándar</th>
+              <th class="">Cantidad</th>
+              <th class="">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mat-row" *ngFor="let item of stock">
+              <td class="">{{item.name}}</td>
+              <td class="">{{item.standardPriceCurrency}} {{item.standardPrice}}</td>
+              <td class="">{{item.stock}} {{item.measureUnit}}</td>
+              <td class="">
+                <mat-form-field>
+                  <input matInput type="number" autocomplete="off" placeholder="Cantidad">
+                </mat-form-field>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

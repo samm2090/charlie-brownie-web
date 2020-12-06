@@ -2,25 +2,20 @@ import { IngredientService } from "./../../services/ingredient.service";
 import { FormControl } from "@angular/forms";
 import { FormGroup } from "@angular/forms";
 import { SpinnerService } from "../../services/spinner.service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-create-recipe",
-  templateUrl: "./create-recipe.component.html",
-  styleUrls: ["./create-recipe.component.css"],
+  selector: "app-stock-manager",
+  templateUrl: "./stock-manager.component.html",
+  styleUrls: ["./stock-manager.component.css"],
 })
-export class CreateRecipeComponent {
+export class StockManagerComponent implements OnInit {
   constructor(
     private router: Router,
     private ingredientService: IngredientService,
     private spinner: SpinnerService
   ) {}
-
-  recipeForm = new FormGroup({
-    name: new FormControl(),
-    description: new FormControl(),
-  });
 
   ingredientForm = new FormGroup({
     name: new FormControl(),
@@ -29,7 +24,11 @@ export class CreateRecipeComponent {
   });
 
   measureUnits = this.ingredientService.getMeasureUnits();
-  recipeIngredients = [];
+  stock = [];
+
+  ngOnInit(): void {
+    this.listStock();
+  }
 
   addIngredient() {
     const name = this.ingredientForm.controls.name.value;
@@ -39,16 +38,11 @@ export class CreateRecipeComponent {
       name,
       measureUnit,
     };
+  }
 
-    this.ingredientService
-      .createIngredient(ingredient)
-      .subscribe((res: any) => {
-        const { body } = res;
-        ingredient.id = body.insertId;
-        ingredient.quantity = this.ingredientForm.controls.quantity.value;
-        this.recipeIngredients.push(ingredient);
-
-        this.ingredientForm.reset();
-      });
+  listStock() {
+    this.ingredientService.getStock().subscribe((res: any) => {
+      this.stock = res;
+    });
   }
 }

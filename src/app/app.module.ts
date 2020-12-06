@@ -1,3 +1,4 @@
+import { StockManagerComponent } from "./components/manage-stock/stock-manager.component";
 import { OverlayModule } from "@angular/cdk/overlay";
 import { CreateRecipeComponent } from "./components/create-recipe/create-recipe.component";
 import { AppComponent } from "./app.component";
@@ -15,14 +16,19 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CreateRecipeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CreateRecipeComponent,
+    StockManagerComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    CdkTableModule,
     MaterialModule,
+    CdkTableModule,
     FlexLayoutModule,
     OverlayModule,
     FormsModule,

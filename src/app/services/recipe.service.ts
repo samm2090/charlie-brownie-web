@@ -7,14 +7,10 @@ import { environment } from "../../environments/environment";
   providedIn: "root",
 })
 export class RecipeService {
-  private ingredientEndpoint = `${environment.apiHost}/ingredient`;
   private recipeEndpoint = `${environment.apiHost}/recipe`;
 
   constructor(private http: HttpClient) {}
 
-  createIngredient(ingredient: Ingredient) {
-    return this.http.post(this.ingredientEndpoint, ingredient, {
-      observe: "response",
-    });
+  createRecipe(ingredient: Ingredient) {
   }
 }
