@@ -36,6 +36,7 @@ export class LoginComponent {
 
     this.authService.login(username, password).subscribe((res: any) => {
       this.spinner.stop();
+
       if (res.body) {
         this.router.navigate(["create-recipe"]);
       }
