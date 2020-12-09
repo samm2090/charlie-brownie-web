@@ -1,7 +1,10 @@
 <div class="container">
   <div fxLayout="column" fxLayoutAlign="space-evenly">
-    <div>
-      <h1>CREAR RECETA</h1>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h1 fxFlex="85">CREAR RECETA</h1>
+      <button (click)="createRecipe()"  fxFlex="15" mat-raised-button aria-hidden="false" color="primary" aria-label="icon">
+        <mat-icon>save</mat-icon>&nbsp;Crear nueva receta
+      </button>
     </div>
     <form [formGroup]="recipeForm" fxLayout="column">
       <mat-form-field>
@@ -40,13 +43,12 @@
           </button>
         </div>
       </form>
-
-      <div fxLayout="column">
-        <table class="mat-table mat-elevation-z8">
+      <div fxLayout="column" class="mat-elevation-z8">
+        <table class="mat-table">
           <tr class="mat-row">
-            <td class="mat-header-cell">Nombre</td>
-            <td class="mat-header-cell">Unidad</td>
-            <td class="mat-header-cell">Cantidad</td>
+            <th class="mat-header-cell">Nombre</th>
+            <th class="mat-header-cell">Unidad</th>
+            <th class="mat-header-cell">Cantidad</th>
           </tr>
           <tr class="mat-row" *ngFor="let ingredient of recipeIngredients">
             <td class="mat-cell">{{ingredient.name}}</td>

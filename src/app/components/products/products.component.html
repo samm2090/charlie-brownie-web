@@ -1,0 +1,56 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-evenly">
+    <h1 fxFlex="85">Productos</h1>
+
+    <form [formGroup]="productForm" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
+      <mat-form-field fxFlex="20">
+        <mat-label>Receta</mat-label>
+        <mat-select formControlName="recipe">
+          <mat-option *ngFor="let recipe of recipes" [value]="recipe.id">
+            {{recipe.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="40">
+        <input type="text" matInput autocomplete="off" placeholder="Nombre" formControlName="name">
+      </mat-form-field>
+      <mat-form-field fxFlex="40">
+        <input type="text" matInput autocomplete="off" placeholder="Descripción" formControlName="description">
+      </mat-form-field>
+      <mat-form-field fxFlex="15">
+        <input type="number" matInput autocomplete="off" placeholder="Precio" formControlName="price">
+      </mat-form-field>
+      <div fxFlex="5">
+        <button mat-mini-fab color="primary" matTooltip="Agregar" matTooltipPosition="above" (click)="addIngredient()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </form>
+
+    <div fxLayout="column" class="mat-elevation-z8 table-section">
+      <table class="mat-table">
+        <thead>
+          <tr class="mat-header-row">
+            <th class="mat-header-cell">Nombre</th>
+            <th class="mat-header-cell">Descripción</th>
+            <th class="mat-header-cell">Precio</th>
+            <th class="mat-header-cell">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="mat-row" *ngFor="let product of products">
+            <td class="mat-cell">{{product.name}}</td>
+            <td class="mat-cell">{{product.description}}</td>
+            <td class="mat-cell">{{product.price}}</td>
+            <td class="mat-cell">
+              <button mat-mini-fab color="primary" matTooltip="Poner en venta" matTooltipPosition="above"
+                (click)="addIngredient()">
+                <mat-icon>sale</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

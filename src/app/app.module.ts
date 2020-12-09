@@ -1,3 +1,5 @@
+import { ProductsComponent } from "./components/products/products.component";
+import { RecipesComponent } from "./components/recipes/recipes.component";
 import { StoreComponent } from "./components/store/store.component";
 import { AdminComponent } from "./components/admin-component/admin.component";
 import { StockManagerComponent } from "./components/manage-stock/stock-manager.component";
@@ -25,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     StockManagerComponent,
     AdminComponent,
     StoreComponent,
+    RecipesComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

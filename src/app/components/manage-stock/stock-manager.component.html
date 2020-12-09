@@ -36,7 +36,6 @@
           <thead>
             <tr class="mat-header-row">
               <th class="mat-header-cell">Nombre</th>
-              <th class="mat-header-cell">Precio estándar</th>
               <th class="mat-header-cell">Cantidad</th>
               <th class="mat-header-cell">Acción</th>
             </tr>
@@ -44,7 +43,6 @@
           <tbody>
             <tr class="mat-row" *ngFor="let item of stock">
               <td class="mat-cell">{{item.name}}</td>
-              <td class="mat-cell">{{item.standardPriceCurrency}} {{item.standardPrice}}</td>
               <td class="mat-cell">{{item.stock}} {{item.measureUnit}}</td>
               <td class="mat-cell">
                 <mat-form-field>

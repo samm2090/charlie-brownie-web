@@ -1,3 +1,4 @@
+import { RecipeService } from "./../../services/recipe.service";
 import { IngredientService } from "./../../services/ingredient.service";
 import { FormControl } from "@angular/forms";
 import { FormGroup } from "@angular/forms";
@@ -14,6 +15,7 @@ export class CreateRecipeComponent {
   constructor(
     private router: Router,
     private ingredientService: IngredientService,
+    private recipeService: RecipeService,
     private spinner: SpinnerService
   ) {}
 
@@ -30,6 +32,25 @@ export class CreateRecipeComponent {
 
   measureUnits = this.ingredientService.getMeasureUnits();
   recipeIngredients = [];
+
+  createRecipe() {
+    const name = this.recipeForm.controls.name.value;
+    const description = this.recipeForm.controls.description.value;
+
+    const recipe: any = {
+      name,
+      description,
+      ingredients: this.recipeIngredients,
+    };
+
+    this.recipeService.createRecipe(recipe).subscribe((res: any) => {
+      const { body } = res;
+
+      if (body.insertId) {
+        this.router.navigate(["admin/recipes"]);
+      }
+    });
+  }
 
   addIngredient() {
     const name = this.ingredientForm.controls.name.value;

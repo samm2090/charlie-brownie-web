@@ -27,7 +27,7 @@ export class AdminComponent implements OnDestroy {
 
   menuOptions = [
     {
-      route: "create-recipe",
+      route: "recipes",
       name: "Recetas",
     },
     {
@@ -35,12 +35,12 @@ export class AdminComponent implements OnDestroy {
       name: "Stock",
     },
     {
-      route: "stock-manager",
+      route: "products",
       name: "Productos",
     },
     {
       route: "stock-manager",
-      name: "Ventas",
+      name: "Pedidos",
     },
   ];
 

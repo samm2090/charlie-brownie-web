@@ -1,0 +1,29 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-evenly">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h1 fxFlex="85">Recetas</h1>
+      <button (click)="addRecipe()"  fxFlex="15" mat-raised-button aria-hidden="false" color="accent" aria-label="icon">
+        <mat-icon>add</mat-icon>&nbsp;Nueva Receta
+      </button>
+    </div>
+
+    <div fxLayout="column" class="mat-elevation-z8 table-section">
+      <table class="mat-table">
+        <thead>
+          <tr class="mat-header-row">
+            <th class="mat-header-cell">Nombre</th>
+            <th class="mat-header-cell">Descripción</th>
+            <th class="mat-header-cell">Ingredientes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="mat-row" *ngFor="let recipe of recipes">
+            <td class="mat-cell">{{recipe.name}}</td>
+            <td class="mat-cell">{{recipe.description}}</td>
+            <td class="mat-cell">{{recipe.ingredients}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

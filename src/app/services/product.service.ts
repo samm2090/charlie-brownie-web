@@ -6,17 +6,17 @@ import { environment } from "../../environments/environment";
 @Injectable({
   providedIn: "root",
 })
-export class RecipeService {
-  private recipeEndpoint = `${environment.apiHost}/recipe`;
+export class ProductService {
+  private productEndpoint = `${environment.apiHost}/product`;
 
   constructor(private http: HttpClient) {}
 
-  getRecipes() {
-    return this.http.get(this.recipeEndpoint);
+  getProducts() {
+    return this.http.get(this.productEndpoint);
   }
 
-  createRecipe(recipe: any) {
-    return this.http.post(this.recipeEndpoint, recipe, {
+  createProduct(recipe: any) {
+    return this.http.post(this.productEndpoint, recipe, {
       observe: "response",
     });
   }
