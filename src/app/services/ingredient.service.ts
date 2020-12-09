@@ -21,6 +21,12 @@ export class IngredientService {
     return this.http.get(`${this.ingredientEndpoint}/stock`);
   }
 
+  updateStock(stock: any) {
+    return this.http.post(`${this.ingredientEndpoint}/stock`, stock, {
+      observe: "response",
+    });
+  }
+
   getMeasureUnits() {
     return ["mg", "g", "kg", "ml", "l", "tz", "oz", "pizca", "un"];
   }

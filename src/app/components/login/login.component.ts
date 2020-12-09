@@ -38,7 +38,7 @@ export class LoginComponent {
       this.spinner.stop();
 
       if (res.body) {
-        this.router.navigate(["create-recipe"]);
+        this.router.navigate(["admin"]);
       }
     });
   }

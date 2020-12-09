@@ -35,21 +35,29 @@
         <table class="mat-table">
           <thead>
             <tr class="mat-header-row">
-              <th class="">Nombre</th>
-              <th class="">Precio estándar</th>
-              <th class="">Cantidad</th>
-              <th class="">Acción</th>
+              <th class="mat-header-cell">Nombre</th>
+              <th class="mat-header-cell">Precio estándar</th>
+              <th class="mat-header-cell">Cantidad</th>
+              <th class="mat-header-cell">Acción</th>
             </tr>
           </thead>
           <tbody>
             <tr class="mat-row" *ngFor="let item of stock">
-              <td class="">{{item.name}}</td>
-              <td class="">{{item.standardPriceCurrency}} {{item.standardPrice}}</td>
-              <td class="">{{item.stock}} {{item.measureUnit}}</td>
-              <td class="">
+              <td class="mat-cell">{{item.name}}</td>
+              <td class="mat-cell">{{item.standardPriceCurrency}} {{item.standardPrice}}</td>
+              <td class="mat-cell">{{item.stock}} {{item.measureUnit}}</td>
+              <td class="mat-cell">
                 <mat-form-field>
-                  <input matInput type="number" autocomplete="off" placeholder="Cantidad">
+                  <input matInput type="number" [(ngModel)]="item.newStock" autocomplete="off" placeholder="Cantidad">
                 </mat-form-field>
+                <button mat-mini-fab color="primary" matTooltip="Añadir" matTooltipPosition="above"
+                  (click)="updateStock('add', item)">
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" matTooltip="Remover" matTooltipPosition="above"
+                  (click)="updateStock('remove', item)">
+                  <mat-icon>remove</mat-icon>
+                </button>
               </td>
             </tr>
           </tbody>

@@ -1,3 +1,5 @@
+import { StoreComponent } from "./components/store/store.component";
+import { AdminComponent } from "./components/admin-component/admin.component";
 import { StockManagerComponent } from "./components/manage-stock/stock-manager.component";
 import { OverlayModule } from "@angular/cdk/overlay";
 import { CreateRecipeComponent } from "./components/create-recipe/create-recipe.component";
@@ -21,6 +23,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     LoginComponent,
     CreateRecipeComponent,
     StockManagerComponent,
+    AdminComponent,
+    StoreComponent,
   ],
   imports: [
     BrowserModule,

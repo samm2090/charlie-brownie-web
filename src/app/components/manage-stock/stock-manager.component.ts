@@ -45,4 +45,23 @@ export class StockManagerComponent implements OnInit {
       this.stock = res;
     });
   }
+
+  updateStock(type: string, ingredient: any) {
+    const quantity =
+      type === "add" ? ingredient.newStock : -ingredient.newStock;
+
+    const stock = {
+      idIngredient: ingredient.id,
+      quantity,
+    };
+
+    this.ingredientService.updateStock(stock).subscribe((res: any) => {
+      const { insertId } = res.body;
+
+      if (insertId) {
+        // ingredient.stock = ingredient.stock + quantity;
+        this.listStock();
+      }
+    });
+  }
 }
