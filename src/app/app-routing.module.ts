@@ -1,3 +1,4 @@
+import { RequestsComponent } from "./components/requests/requests.component";
 import { ProductsComponent } from "./components/products/products.component";
 import { RecipesComponent } from "./components/recipes/recipes.component";
 import { StoreComponent } from "./components/store/store.component";
@@ -18,6 +19,7 @@ const routes: Routes = [
         component: RecipesComponent,
       },
       { path: "create-recipe", component: CreateRecipeComponent },
+      { path: "requests", component: RequestsComponent },
       { path: "products", component: ProductsComponent },
       { path: "stock-manager", component: StockManagerComponent },
       { path: "**", pathMatch: "full", redirectTo: "recipes" },

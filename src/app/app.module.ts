@@ -1,3 +1,4 @@
+import { RequestsComponent } from './components/requests/requests.component';
 import { ProductsComponent } from "./components/products/products.component";
 import { RecipesComponent } from "./components/recipes/recipes.component";
 import { StoreComponent } from "./components/store/store.component";
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     StoreComponent,
     RecipesComponent,
     ProductsComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,

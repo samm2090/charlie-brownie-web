@@ -30,6 +30,7 @@ export class ProductsComponent implements OnInit {
     name: new FormControl(),
     description: new FormControl(),
     price: new FormControl(),
+    recipe: new FormControl(),
   });
 
   ngOnInit(): void {
@@ -50,6 +51,39 @@ export class ProductsComponent implements OnInit {
   listProducts() {
     this.productService.getProducts().subscribe((res: any) => {
       this.products = res;
+    });
+  }
+
+  createProduct() {
+    const name = this.productForm.controls.name.value;
+    const description = this.productForm.controls.description.value;
+    const price = this.productForm.controls.price.value;
+    const idRecipe = this.productForm.controls.recipe.value;
+
+    const product: any = {
+      name,
+      description,
+      price,
+      idRecipe,
+    };
+
+    this.productService.createProduct(product).subscribe((res: any) => {
+      const { body } = res;
+
+      if (body.insertId) {
+        this.listProducts();
+      }
+    });
+  }
+
+  putOnSale(product: any) {
+    product.status = "on sale";
+    this.productService.updateProduct(product).subscribe((res: any) => {
+      const { body } = res;
+
+      if (body.insertId) {
+        this.listProducts();
+      }
     });
   }
 }

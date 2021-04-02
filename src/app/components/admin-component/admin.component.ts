@@ -39,7 +39,7 @@ export class AdminComponent implements OnDestroy {
       name: "Productos",
     },
     {
-      route: "stock-manager",
+      route: "requests",
       name: "Pedidos",
     },
   ];

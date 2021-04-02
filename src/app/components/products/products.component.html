@@ -1,6 +1,6 @@
 <div class="container">
   <div fxLayout="column" fxLayoutAlign="space-evenly">
-    <h1 fxFlex="85">Productos</h1>
+    <h1 fxFlex="85">PRODUCTOS</h1>
 
     <form [formGroup]="productForm" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
       <mat-form-field fxFlex="20">
@@ -21,7 +21,7 @@
         <input type="number" matInput autocomplete="off" placeholder="Precio" formControlName="price">
       </mat-form-field>
       <div fxFlex="5">
-        <button mat-mini-fab color="primary" matTooltip="Agregar" matTooltipPosition="above" (click)="addIngredient()">
+        <button mat-mini-fab color="primary" matTooltip="Agregar" matTooltipPosition="above" (click)="createProduct()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -34,6 +34,7 @@
             <th class="mat-header-cell">Nombre</th>
             <th class="mat-header-cell">Descripción</th>
             <th class="mat-header-cell">Precio</th>
+            <th class="mat-header-cell">Estado</th>
             <th class="mat-header-cell">Acción</th>
           </tr>
         </thead>
@@ -41,12 +42,11 @@
           <tr class="mat-row" *ngFor="let product of products">
             <td class="mat-cell">{{product.name}}</td>
             <td class="mat-cell">{{product.description}}</td>
-            <td class="mat-cell">{{product.price}}</td>
+            <td class="mat-cell">S/. {{product.price}}</td>
+            <th class="mat-header-cell">{{product.status}}</th>
             <td class="mat-cell">
-              <button mat-mini-fab color="primary" matTooltip="Poner en venta" matTooltipPosition="above"
-                (click)="addIngredient()">
-                <mat-icon>sale</mat-icon>
-              </button>
+              <button *ngIf="product.status === 'created'" (click)="putOnSale(product)" mat-raised-button
+                color="accent">Poner en venta&nbsp;<mat-icon>monetization_on</mat-icon></button>
             </td>
           </tr>
         </tbody>

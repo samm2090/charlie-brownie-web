@@ -11,12 +11,18 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts() {
+  getProducts(filter?: any) {
     return this.http.get(this.productEndpoint);
   }
 
-  createProduct(recipe: any) {
-    return this.http.post(this.productEndpoint, recipe, {
+  createProduct(product: any) {
+    return this.http.post(this.productEndpoint, product, {
+      observe: "response",
+    });
+  }
+
+  updateProduct(product: any) {
+    return this.http.patch(this.productEndpoint, product, {
       observe: "response",
     });
   }
